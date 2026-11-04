@@ -3,31 +3,31 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f3f6ee;color:#243b2b;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif}main{max-width:1240px;margin:auto;padding:40px 20px}header,.toolbar,.stats{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}small{color:#64816a;letter-spacing:3px}h1{font-size:32px;letter-spacing:-1px;margin:8px 0}p{color:#738176;font-size:13px}.stats{gap:10px}.stat{background:white;border:1px solid #dee6d8;border-radius:15px;padding:16px 24px;text-align:center}.stat b{display:block;font-size:25px;color:#397849}.stat span{font-size:12px;color:#738176}.card{background:white;border:1px solid #dee6d8;border-radius:18px;margin-top:22px;overflow:hidden}.toolbar{padding:16px 20px}.month{display:flex;align-items:center;gap:14px}.month strong{min-width:130px;text-align:center}button,input,select{font:inherit}button{cursor:pointer;border:1px solid #d6e1d1;border-radius:8px;background:#f6f9f2;color:#397849;padding:9px 13px}button:hover{background:#e5efdf}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #83ab65;outline-offset:2px}.danger{color:#a35d59}.scroll{overflow:auto}table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px}th,td{padding:8px 3px;text-align:center;min-width:31px;border-bottom:1px solid #f0f3ed}th:first-child,td:first-child{position:sticky;left:0;background:white;text-align:left;min-width:178px;padding-left:18px;z-index:1}th{color:#7d8e80;font-weight:500}th span{display:block;font-size:10px;margin-bottom:5px}.today{background:#e8f1e0}.sun{color:#c56868}.sat{color:#5b83b4}.check{padding:0;width:24px;height:24px;border:1.5px solid #becdb8;border-radius:5px;background:white}.check[aria-pressed=true]{background:#397849;border-color:#397849;color:white}.remove{border:0;background:none;color:#afaaa3;padding:4px;margin-left:7px}td:last-child{min-width:55px;font-weight:600}.add{display:flex;gap:8px;flex-wrap:wrap;padding:18px}.add input{flex:1;min-width:140px;border:1px solid #d6e1d1;border-radius:8px;padding:10px}.add select{border:1px solid #d6e1d1;border-radius:8px;background:#f6f9f2}.primary{background:#397849;color:white}.chart{padding:22px}.chart h2{font-size:15px;margin:0 0 18px}.chart svg{width:100%;height:180px;overflow:visible}.foot{text-align:center;line-height:1.8}.empty{padding:25px}.actions{display:flex;gap:6px;flex-wrap:wrap}@media(max-width:650px){main{padding:24px 12px}header{display:block}.stats{margin-top:18px}.stat{flex:1;padding:12px 8px}.toolbar{justify-content:center;padding:14px 8px}h1{font-size:27px}.chart{padding:18px}.month{justify-content:center}}
 
-/* Chiikawa encouragement companion */
+/* Encouragement companion */
 .companion{display:flex;align-items:center;gap:24px;padding:18px 28px;background:linear-gradient(115deg,#fff8f9,#fffdf3 65%,#f1f8e9);position:relative;isolation:isolate}
 .character-stage{width:150px;height:155px;flex-shrink:0;position:relative;perspective:650px;display:grid;place-items:center}
 .character-stage:after{content:"";position:absolute;bottom:4px;width:95px;height:14px;background:#c9b9a342;border-radius:50%;filter:blur(4px);z-index:-1}
-.character{width:150px;height:145px;object-fit:contain;filter:drop-shadow(3px 7px 2px #beaaa32c);transform-origin:50% 90%;animation:chi-float 3.6s ease-in-out infinite}
-.character-stage.celebrate .character{animation:chi-cheer .65s ease-in-out 3}
+.character{width:150px;height:145px;object-fit:contain;filter:drop-shadow(3px 7px 2px #beaaa32c);transform-origin:50% 90%;animation:buddy-float 3.6s ease-in-out infinite}
+.character-stage.celebrate .character{animation:buddy-cheer .65s ease-in-out 3}
 .character-fallback{font-size:74px}
 .praise-copy{flex:1;min-width:0}.praise-label{color:#a97683;font-size:11px;font-weight:700;letter-spacing:2px}
 .praise-bubble{background:#fff;border:1px solid #efdcdf;border-radius:17px;padding:15px 20px;margin:8px 0;box-shadow:0 5px 0 #f2e7e2;position:relative}
 .praise-bubble:before{content:"";position:absolute;left:-8px;top:22px;width:14px;height:14px;background:white;border-left:1px solid #efdcdf;border-bottom:1px solid #efdcdf;transform:rotate(45deg)}
 .praise-bubble strong{display:block;font-size:18px;line-height:1.5;overflow-wrap:anywhere}.praise-bubble span{display:block;font-size:13px;line-height:1.6;color:#887a76;margin-top:4px;overflow-wrap:anywhere}
 .companion-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10px;color:#998d87}.companion-meta a{color:inherit}.companion-meta button{font-size:11px;padding:3px 8px;background:white}
-.sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:18px}.sparkles i{position:absolute;left:var(--x);top:40%;font-style:normal;opacity:0;color:var(--color);font-size:22px;animation:chi-spark 1.1s var(--delay) ease-out both}
-@keyframes chi-float{0%,100%{transform:translateY(0) rotate(-2deg) rotateY(-8deg)}50%{transform:translateY(-7px) rotate(2deg) rotateY(8deg)}}
-@keyframes chi-cheer{0%,100%{transform:translateY(0) scale(1.02,.98)}35%{transform:translateY(-20px) rotate(-9deg) scale(.98,1.03)}65%{transform:translateY(-7px) rotate(9deg)}}
-@keyframes chi-spark{0%{opacity:0;transform:translateY(20px) scale(.4)}25%{opacity:1}100%{opacity:0;transform:translateY(-80px) rotate(60deg) scale(1.1)}}
+.sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:18px}.sparkles i{position:absolute;left:var(--x);top:40%;font-style:normal;opacity:0;color:var(--color);font-size:22px;animation:buddy-spark 1.1s var(--delay) ease-out both}
+@keyframes buddy-float{0%,100%{transform:translateY(0) rotate(-2deg) rotateY(-8deg)}50%{transform:translateY(-7px) rotate(2deg) rotateY(8deg)}}
+@keyframes buddy-cheer{0%,100%{transform:translateY(0) scale(1.02,.98)}35%{transform:translateY(-20px) rotate(-9deg) scale(.98,1.03)}65%{transform:translateY(-7px) rotate(9deg)}}
+@keyframes buddy-spark{0%{opacity:0;transform:translateY(20px) scale(.4)}25%{opacity:1}100%{opacity:0;transform:translateY(-80px) rotate(60deg) scale(1.1)}}
 @media(max-width:650px){.companion{padding:16px 12px;gap:10px}.character-stage{width:95px;height:120px}.character{width:100px;height:115px}.character-stage:after{width:60px;bottom:0}.praise-bubble{padding:11px 12px}.praise-bubble strong{font-size:15px}.praise-bubble span{font-size:12px}.praise-label{letter-spacing:1px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.character,.character-stage.celebrate .character,.sparkles i{animation:none!important}}
 
 </style></head><body><main>
 <header><div><small>BUILD A BETTER EVERYDAY</small><h1>나의 습관 트래커 🌱</h1><p>작은 실천을 모아, 꾸준한 변화를 만드세요.</p></div><div class="stats"><div class="stat"><b id="count">0</b><span>습관 개수</span></div><div class="stat"><b id="done">0</b><span>달성 횟수</span></div><div class="stat"><b id="rate">0%</b><span>월 전체 달성률</span></div></div></header>
 
-<section class="card companion" aria-label="치이카와의 습관 응원">
-<div class="character-stage" id="character-stage"><img class="character" id="chiikawa-image" alt="치이카와" referrerpolicy="no-referrer" src="https://images.squarespace-cdn.com/content/v1/6670add926f2a64cd00fb0e7/7828ba38-8302-4215-b4e9-2873c2a27ecc/characters%2Bchiikawa%2Bphonetic%2Band%2Bname%2Bcopy.png?format=400w"><span class="character-fallback" id="character-fallback" hidden aria-label="응원 캐릭터">🌱</span></div>
-<div class="praise-copy"><div class="praise-label">CHIIKAWA · 작은 실천 응원단</div><div class="praise-bubble" role="status" aria-live="polite" aria-atomic="true"><strong id="praise-title">오늘도 한 칸씩, 함께 해보자!</strong><span id="praise-detail">습관을 완료하고 체크하면 응원해 줄게. 작은 실천도 충분히 멋져!</span></div><div class="companion-meta"><span>이미지 © nagano · <a href="https://www.chiikawaofficial.com/characters/" target="_blank" rel="noopener noreferrer">캐릭터 이미지 출처</a> · 비공식 팬 UI</span><button type="button" id="cheer-toggle" aria-pressed="true">응원 켜짐</button></div></div><div class="sparkles" id="sparkles" aria-hidden="true"></div>
+<section class="card companion" aria-label="습관 응원">
+<div class="character-stage" id="character-stage"><span class="character" id="buddy-character" role="img" aria-label="새싹 응원 캐릭터" style="display:grid;place-items:center;font-size:80px">🌱</span></div>
+<div class="praise-copy"><div class="praise-label">작은 실천 응원단</div><div class="praise-bubble" role="status" aria-live="polite" aria-atomic="true"><strong id="praise-title">오늘도 한 칸씩, 함께 해보자!</strong><span id="praise-detail">습관을 완료하고 체크하면 응원해 줄게. 작은 실천도 충분히 멋져!</span></div><div class="companion-meta"><span>오늘의 작은 실천을 응원해요</span><button type="button" id="cheer-toggle" aria-pressed="true">응원 켜짐</button></div></div><div class="sparkles" id="sparkles" aria-hidden="true"></div>
 </section>
 <section class="card"><div class="toolbar"><div class="month"><button id="prev" aria-label="이전 달">‹</button><strong id="month"></strong><button id="next" aria-label="다음 달">›</button><button id="today">이번 달</button></div><div class="actions"><button id="csv">↓ CSV 다운로드</button><button id="reset" class="danger">이번 달 초기화</button></div></div><div class="scroll"><table id="grid"></table></div><form id="add" class="add"><select id="emoji" aria-label="습관 아이콘"><option>🏃</option><option>📚</option><option>💧</option><option>🌙</option><option>💪</option><option>🧘</option><option>✍️</option><option>🎯</option></select><input id="name" aria-label="새 습관 이름" placeholder="새 습관 이름을 입력하세요" maxlength="50" required><button class="primary">+ 습관 추가</button></form></section>
 <section class="card chart"><h2>일일 달성률 추이</h2><div id="chart"></div><p>월 전체 달성률은 해당 월의 모든 날짜를 기준으로 계산합니다.</p></section>
@@ -85,11 +85,9 @@ let cheerEnabled=data.cheerEnabled!==false;
 function syncCheer(){
   $('cheer-toggle').textContent=cheerEnabled?'응원 켜짐':'응원 꺼짐';
   $('cheer-toggle').setAttribute('aria-pressed',String(cheerEnabled));
-  $('chiikawa-image').style.animationPlayState=cheerEnabled?'running':'paused';
+  $('buddy-character').style.animationPlayState=cheerEnabled?'running':'paused';
 }
 $('cheer-toggle').onclick=()=>{cheerEnabled=!cheerEnabled;data.cheerEnabled=cheerEnabled;save();syncCheer();if(!cheerEnabled){clearTimeout(cheerTimer);$('character-stage').classList.remove('celebrate');$('sparkles').replaceChildren()}};
-$('chiikawa-image').onerror=()=>{$('chiikawa-image').hidden=true;$('character-fallback').hidden=false};
-if($('chiikawa-image').complete&&!$('chiikawa-image').naturalWidth)$('chiikawa-image').onerror();
 function praiseHabit(h,day){
   if(!cheerEnabled)return;
   const allDone=data.habits.length>0&&data.habits.every(item=>on(item.id,day));
