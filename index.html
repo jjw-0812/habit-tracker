@@ -11,9 +11,18 @@
 'use strict';
 const $=id=>document.getElementById(id),key='jjw-habit-tracker-v1',now=new Date();
 let year=now.getFullYear(),month=now.getMonth(),data;
-const defaults={habits:[{id:'run',name:'운동하기',emoji:'🏃'},{id:'read',name:'독서 30분',emoji:'📚'},{id:'water',name:'물 2L 마시기',emoji:'💧'},{id:'sleep',name:'일찍 자기',emoji:'🌙'},{id:'meditate',name:'명상하기',emoji:'🧘'}],checks:{}};
+const addedHabits=[{id:'supplements',name:'영양제 챙겨먹기',emoji:'💊'},{id:'english-homework',name:'영어회화 과제 하기',emoji:'🗣️'}];
+const defaults={habits:[{id:'run',name:'운동하기',emoji:'🏃'},{id:'read',name:'독서 30분',emoji:'📚'},{id:'water',name:'물 2L 마시기',emoji:'💧'},{id:'sleep',name:'일찍 자기',emoji:'🌙'},{id:'meditate',name:'명상하기',emoji:'🧘'},...addedHabits],checks:{}};
 try{data=JSON.parse(localStorage.getItem(key))||structuredClone(defaults);if(!Array.isArray(data.habits)||!data.checks||typeof data.checks!=='object')throw Error()}catch{data=structuredClone(defaults)}
 function save(){try{localStorage.setItem(key,JSON.stringify(data))}catch{$('status').textContent='브라우저 저장이 불가능합니다. 페이지를 닫기 전 CSV를 다운로드하세요.'}}
+// Apply this addition once so later user deletions remain respected.
+if(!data.addedStudyAndSupplements){
+  addedHabits.forEach(h=>{
+    if(!data.habits.some(existing=>existing.id===h.id||existing.name===h.name))data.habits.push({...h});
+  });
+  data.addedStudyAndSupplements=true;
+  save();
+}
 const prefix=()=>year+'-'+String(month+1).padStart(2,'0')+'-';
 const ck=(id,d)=>prefix()+d+':'+id;
 const days=()=>new Date(year,month+1,0).getDate();
