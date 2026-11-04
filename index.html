@@ -2,8 +2,33 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나의 습관 트래커</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f3f6ee;color:#243b2b;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif}main{max-width:1240px;margin:auto;padding:40px 20px}header,.toolbar,.stats{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}small{color:#64816a;letter-spacing:3px}h1{font-size:32px;letter-spacing:-1px;margin:8px 0}p{color:#738176;font-size:13px}.stats{gap:10px}.stat{background:white;border:1px solid #dee6d8;border-radius:15px;padding:16px 24px;text-align:center}.stat b{display:block;font-size:25px;color:#397849}.stat span{font-size:12px;color:#738176}.card{background:white;border:1px solid #dee6d8;border-radius:18px;margin-top:22px;overflow:hidden}.toolbar{padding:16px 20px}.month{display:flex;align-items:center;gap:14px}.month strong{min-width:130px;text-align:center}button,input,select{font:inherit}button{cursor:pointer;border:1px solid #d6e1d1;border-radius:8px;background:#f6f9f2;color:#397849;padding:9px 13px}button:hover{background:#e5efdf}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #83ab65;outline-offset:2px}.danger{color:#a35d59}.scroll{overflow:auto}table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px}th,td{padding:8px 3px;text-align:center;min-width:31px;border-bottom:1px solid #f0f3ed}th:first-child,td:first-child{position:sticky;left:0;background:white;text-align:left;min-width:178px;padding-left:18px;z-index:1}th{color:#7d8e80;font-weight:500}th span{display:block;font-size:10px;margin-bottom:5px}.today{background:#e8f1e0}.sun{color:#c56868}.sat{color:#5b83b4}.check{padding:0;width:24px;height:24px;border:1.5px solid #becdb8;border-radius:5px;background:white}.check[aria-pressed=true]{background:#397849;border-color:#397849;color:white}.remove{border:0;background:none;color:#afaaa3;padding:4px;margin-left:7px}td:last-child{min-width:55px;font-weight:600}.add{display:flex;gap:8px;flex-wrap:wrap;padding:18px}.add input{flex:1;min-width:140px;border:1px solid #d6e1d1;border-radius:8px;padding:10px}.add select{border:1px solid #d6e1d1;border-radius:8px;background:#f6f9f2}.primary{background:#397849;color:white}.chart{padding:22px}.chart h2{font-size:15px;margin:0 0 18px}.chart svg{width:100%;height:180px;overflow:visible}.foot{text-align:center;line-height:1.8}.empty{padding:25px}.actions{display:flex;gap:6px;flex-wrap:wrap}@media(max-width:650px){main{padding:24px 12px}header{display:block}.stats{margin-top:18px}.stat{flex:1;padding:12px 8px}.toolbar{justify-content:center;padding:14px 8px}h1{font-size:27px}.chart{padding:18px}.month{justify-content:center}}
+
+/* Chiikawa encouragement companion */
+.companion{display:flex;align-items:center;gap:24px;padding:18px 28px;background:linear-gradient(115deg,#fff8f9,#fffdf3 65%,#f1f8e9);position:relative;isolation:isolate}
+.character-stage{width:150px;height:155px;flex-shrink:0;position:relative;perspective:650px;display:grid;place-items:center}
+.character-stage:after{content:"";position:absolute;bottom:4px;width:95px;height:14px;background:#c9b9a342;border-radius:50%;filter:blur(4px);z-index:-1}
+.character{width:150px;height:145px;object-fit:contain;filter:drop-shadow(3px 7px 2px #beaaa32c);transform-origin:50% 90%;animation:chi-float 3.6s ease-in-out infinite}
+.character-stage.celebrate .character{animation:chi-cheer .65s ease-in-out 3}
+.character-fallback{font-size:74px}
+.praise-copy{flex:1;min-width:0}.praise-label{color:#a97683;font-size:11px;font-weight:700;letter-spacing:2px}
+.praise-bubble{background:#fff;border:1px solid #efdcdf;border-radius:17px;padding:15px 20px;margin:8px 0;box-shadow:0 5px 0 #f2e7e2;position:relative}
+.praise-bubble:before{content:"";position:absolute;left:-8px;top:22px;width:14px;height:14px;background:white;border-left:1px solid #efdcdf;border-bottom:1px solid #efdcdf;transform:rotate(45deg)}
+.praise-bubble strong{display:block;font-size:18px;line-height:1.5;overflow-wrap:anywhere}.praise-bubble span{display:block;font-size:13px;line-height:1.6;color:#887a76;margin-top:4px;overflow-wrap:anywhere}
+.companion-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10px;color:#998d87}.companion-meta a{color:inherit}.companion-meta button{font-size:11px;padding:3px 8px;background:white}
+.sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:18px}.sparkles i{position:absolute;left:var(--x);top:40%;font-style:normal;opacity:0;color:var(--color);font-size:22px;animation:chi-spark 1.1s var(--delay) ease-out both}
+@keyframes chi-float{0%,100%{transform:translateY(0) rotate(-2deg) rotateY(-8deg)}50%{transform:translateY(-7px) rotate(2deg) rotateY(8deg)}}
+@keyframes chi-cheer{0%,100%{transform:translateY(0) scale(1.02,.98)}35%{transform:translateY(-20px) rotate(-9deg) scale(.98,1.03)}65%{transform:translateY(-7px) rotate(9deg)}}
+@keyframes chi-spark{0%{opacity:0;transform:translateY(20px) scale(.4)}25%{opacity:1}100%{opacity:0;transform:translateY(-80px) rotate(60deg) scale(1.1)}}
+@media(max-width:650px){.companion{padding:16px 12px;gap:10px}.character-stage{width:95px;height:120px}.character{width:100px;height:115px}.character-stage:after{width:60px;bottom:0}.praise-bubble{padding:11px 12px}.praise-bubble strong{font-size:15px}.praise-bubble span{font-size:12px}.praise-label{letter-spacing:1px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.character,.character-stage.celebrate .character,.sparkles i{animation:none!important}}
+
 </style></head><body><main>
 <header><div><small>BUILD A BETTER EVERYDAY</small><h1>나의 습관 트래커 🌱</h1><p>작은 실천을 모아, 꾸준한 변화를 만드세요.</p></div><div class="stats"><div class="stat"><b id="count">0</b><span>습관 개수</span></div><div class="stat"><b id="done">0</b><span>달성 횟수</span></div><div class="stat"><b id="rate">0%</b><span>월 전체 달성률</span></div></div></header>
+
+<section class="card companion" aria-label="치이카와의 습관 응원">
+<div class="character-stage" id="character-stage"><img class="character" id="chiikawa-image" alt="치이카와" referrerpolicy="no-referrer" src="https://images.squarespace-cdn.com/content/v1/6670add926f2a64cd00fb0e7/7828ba38-8302-4215-b4e9-2873c2a27ecc/characters%2Bchiikawa%2Bphonetic%2Band%2Bname%2Bcopy.png?format=400w"><span class="character-fallback" id="character-fallback" hidden aria-label="응원 캐릭터">🌱</span></div>
+<div class="praise-copy"><div class="praise-label">CHIIKAWA · 작은 실천 응원단</div><div class="praise-bubble" role="status" aria-live="polite" aria-atomic="true"><strong id="praise-title">오늘도 한 칸씩, 함께 해보자!</strong><span id="praise-detail">습관을 완료하고 체크하면 응원해 줄게. 작은 실천도 충분히 멋져!</span></div><div class="companion-meta"><span>이미지 © nagano · <a href="https://www.chiikawaofficial.com/characters/" target="_blank" rel="noopener noreferrer">캐릭터 이미지 출처</a> · 비공식 팬 UI</span><button type="button" id="cheer-toggle" aria-pressed="true">응원 켜짐</button></div></div><div class="sparkles" id="sparkles" aria-hidden="true"></div>
+</section>
 <section class="card"><div class="toolbar"><div class="month"><button id="prev" aria-label="이전 달">‹</button><strong id="month"></strong><button id="next" aria-label="다음 달">›</button><button id="today">이번 달</button></div><div class="actions"><button id="csv">↓ CSV 다운로드</button><button id="reset" class="danger">이번 달 초기화</button></div></div><div class="scroll"><table id="grid"></table></div><form id="add" class="add"><select id="emoji" aria-label="습관 아이콘"><option>🏃</option><option>📚</option><option>💧</option><option>🌙</option><option>💪</option><option>🧘</option><option>✍️</option><option>🎯</option></select><input id="name" aria-label="새 습관 이름" placeholder="새 습관 이름을 입력하세요" maxlength="50" required><button class="primary">+ 습관 추가</button></form></section>
 <section class="card chart"><h2>일일 달성률 추이</h2><div id="chart"></div><p>월 전체 달성률은 해당 월의 모든 날짜를 기준으로 계산합니다.</p></section>
 <p class="foot" id="status" role="status">체크하면 자동 저장됩니다 · 기록은 현재 기기·브라우저에만 보관됩니다.<br>브라우저 데이터 삭제 전 CSV로 기록을 내려받으세요.</p></main>
@@ -36,7 +61,7 @@ let total=0;const table=$('grid');table.replaceChildren();const head=node('thead
 for(let d=1;d<=n;d++){const th=node('th'),dow=new Date(year,month,d).getDay();th.append(node('span','일월화수목금토'[dow]),node('b',d));if(dow===0)th.className='sun';if(dow===6)th.className='sat';if(year===now.getFullYear()&&month===now.getMonth()&&d===now.getDate())th.classList.add('today');hr.append(th)}
 hr.append(node('th','달성'));head.append(hr);table.append(head);const body=node('tbody');
 habits.forEach(h=>{const tr=node('tr'),label=node('td');label.append(node('span',h.emoji+' '+h.name));const del=node('button','×');del.className='remove';del.setAttribute('aria-label',h.name+' 삭제');del.onclick=()=>{if(!confirm('이 습관과 모든 달의 관련 기록을 삭제할까요?'))return;data.habits=data.habits.filter(x=>x.id!==h.id);Object.keys(data.checks).forEach(k=>{if(k.endsWith(':'+h.id))delete data.checks[k]});save();render()};label.append(del);tr.append(label);let count=0;
-for(let d=1;d<=n;d++){const td=node('td'),b=node('button',on(h.id,d)?'✓':'');b.className='check';b.setAttribute('aria-pressed',String(on(h.id,d)));b.setAttribute('aria-label',h.name+' '+(month+1)+'월 '+d+'일');b.onclick=()=>{const k=ck(h.id,d);if(data.checks[k])delete data.checks[k];else data.checks[k]=true;save();render();const rows=table.querySelectorAll('tbody tr');const index=data.habits.findIndex(x=>x.id===h.id);rows[index]?.children[d]?.querySelector('button')?.focus({preventScroll:true})};td.append(b);tr.append(td);if(on(h.id,d))count++}
+for(let d=1;d<=n;d++){const td=node('td'),b=node('button',on(h.id,d)?'✓':'');b.className='check';b.setAttribute('aria-pressed',String(on(h.id,d)));b.setAttribute('aria-label',h.name+' '+(month+1)+'월 '+d+'일');b.onclick=()=>{const k=ck(h.id,d);if(data.checks[k])delete data.checks[k];else data.checks[k]=true;const completed=!!data.checks[k];save();render();if(completed)praiseHabit(h,d);const rows=table.querySelectorAll('tbody tr');const index=data.habits.findIndex(x=>x.id===h.id);rows[index]?.children[d]?.querySelector('button')?.focus({preventScroll:true})};td.append(b);tr.append(td);if(on(h.id,d))count++}
 total+=count;tr.append(node('td',count+'/'+n));body.append(tr)});
 const pr=node('tr');pr.append(node('td','일일 달성률'));for(let d=1;d<=n;d++)pr.append(node('td',pct(d)+'%'));pr.append(node('td',''));body.append(pr);table.append(body);
 $('done').textContent=total;$('rate').textContent=(n*habits.length?Math.round(total/(n*habits.length)*100):0)+'%';draw(n);
@@ -55,5 +80,40 @@ $('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);$('today').onclick=
 $('add').onsubmit=e=>{e.preventDefault();const name=$('name').value.trim();if(!name)return;data.habits.push({id:crypto.randomUUID(),name,emoji:$('emoji').value});$('name').value='';save();render()};
 $('reset').onclick=()=>{if(!confirm(year+'년 '+(month+1)+'월 기록을 초기화할까요? 다른 달 기록은 유지됩니다.'))return;Object.keys(data.checks).forEach(k=>{if(k.startsWith(prefix()))delete data.checks[k]});save();render()};
 $('csv').onclick=()=>{const n=days(),rows=[['습관',...Array.from({length:n},(_,i)=>(i+1)+'일'),'합계','달성률(%)']];data.habits.forEach(h=>{let sum=0;const cells=Array.from({length:n},(_,i)=>{if(on(h.id,i+1)){sum++;return 'O'}return ''});rows.push([h.emoji+' '+h.name,...cells,sum,Math.round(sum/n*100)])});rows.push(['일일 달성률(%)',...Array.from({length:n},(_,i)=>pct(i+1))]);const escape=v=>'"'+String(v).replace(/^[=+@-]/,"'$&").replaceAll('"','""')+'"';const blob=new Blob(['\ufeff'+rows.map(r=>r.map(escape).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob),a=node('a');a.href=url;a.download='habit-tracker-'+year+'-'+String(month+1).padStart(2,'0')+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+let cheerTimer;
+let cheerEnabled=data.cheerEnabled!==false;
+function syncCheer(){
+  $('cheer-toggle').textContent=cheerEnabled?'응원 켜짐':'응원 꺼짐';
+  $('cheer-toggle').setAttribute('aria-pressed',String(cheerEnabled));
+  $('chiikawa-image').style.animationPlayState=cheerEnabled?'running':'paused';
+}
+$('cheer-toggle').onclick=()=>{cheerEnabled=!cheerEnabled;data.cheerEnabled=cheerEnabled;save();syncCheer();if(!cheerEnabled){clearTimeout(cheerTimer);$('character-stage').classList.remove('celebrate');$('sparkles').replaceChildren()}};
+$('chiikawa-image').onerror=()=>{$('chiikawa-image').hidden=true;$('character-fallback').hidden=false};
+if($('chiikawa-image').complete&&!$('chiikawa-image').naturalWidth)$('chiikawa-image').onerror();
+function praiseHabit(h,day){
+  if(!cheerEnabled)return;
+  const allDone=data.habits.length>0&&data.habits.every(item=>on(item.id,day));
+  const messages={
+    supplements:['몸을 챙긴 너, 정말 잘했어! 💊','영양제 챙겨먹기 완료! 스스로를 돌보는 습관이 쌓이고 있어.'],
+    'english-homework':['영어회화 과제까지 해냈네! 🗣️','한 번 더 연습한 만큼, 영어로 말하는 힘도 자라고 있어.'],
+    run:['운동 완료! 오늘도 멋지게 해냈어! 💪','차곡차곡 쌓인 실천이 더 튼튼한 너를 만들어 줄 거야.'],
+    read:['책과 함께한 시간, 정말 멋져! 📚','오늘 읽은 만큼 생각의 세계도 조금 더 넓어졌어.'],
+    water:['물 마시기도 잊지 않았네! 💧','작은 습관까지 챙기는 너를 응원해.'],
+    sleep:['좋은 휴식을 위한 한 걸음! 🌙','오늘도 수고했어. 편안하게 쉬어 가자.'],
+    meditate:['마음을 돌보는 시간도 챙겼구나! 🌿','잠깐의 쉼도 소중한 실천이야. 잘했어!']
+  };
+  const generic=['와아! 하나 더 해냈어! ✨','작은 실천이 하나씩 쌓이고 있어! 🌱','오늘의 너, 정말 기특해! 💖','꾸준히 해내는 모습이 멋져! ⭐'];
+  const pair=messages[h.id]||[generic[Math.floor(Math.random()*generic.length)],h.name+' 완료! 이 한 칸이 소중한 변화의 시작이야.'];
+  $('praise-title').textContent=allDone?'오늘의 습관 전부 달성! 최고야! 🎉':pair[0];
+  $('praise-detail').textContent=(month+1)+'월 '+day+'일 · '+(allDone?'총 '+data.habits.length+'개를 모두 해냈어. 오늘의 너에게 큰 박수!':pair[1]);
+  const stage=$('character-stage');clearTimeout(cheerTimer);stage.classList.remove('celebrate');void stage.offsetWidth;stage.classList.add('celebrate');
+  const sparkles=$('sparkles');sparkles.replaceChildren();
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    for(let i=0;i<12;i++){const star=node('i',['✦','♡','✧'][i%3]);star.style.setProperty('--x',(5+Math.random()*90)+'%');star.style.setProperty('--delay',(Math.random()*.25)+'s');star.style.setProperty('--color',['#e5a4b7','#c2a553','#8aaf75'][i%3]);sparkles.append(star)}
+  }
+  cheerTimer=setTimeout(()=>{stage.classList.remove('celebrate');sparkles.replaceChildren()},2200);
+}
+syncCheer();
+
 render();
 </script></body></html>
